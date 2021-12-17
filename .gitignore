@@ -1,0 +1,27 @@
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/storage/*.json
+/vendor
+.env
+.env.backup
+.phpunit.result.cache
+npm-debug.log
+yarn-error.log
+
+# PHPStorm
+.idea
+
+# macOS
+.DS_Store
+
+# barryvdh/laravel-ide-helper
+.phpstorm.meta.php
+_ide_helper.php
+_ide_helper_models.php
+
+# Internal
+.gitlab-ci.yml
+Envoy.blade.php
+public/reset_opcache.php
