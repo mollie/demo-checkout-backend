@@ -18,7 +18,7 @@ Pick a location on your machine to clone the project into.
 
 ```bash
 # Clone the project
-git clone git@git.webuildapps.com:mol/mollie_checkout_backend.git
+git clone git@github.com:mollie/demo-checkout-backend.git
 cd mollie_checkout_backend
 ```
 
