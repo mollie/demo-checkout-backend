@@ -2,9 +2,9 @@
 
 Mollie Checkout for iOS and Android require a backend to securely handle payments. The backend provides the API endpoints needed to run the Mollie Checkout demo apps, and it supports Mollie's webhook for handling payments.
 
-This backend is written in PHP 8.0 and uses [Laravel](https://laravel.com/). It uses [Composer](https://getcomposer.org/) to manage the PHP dependencies.
+This backend is written in PHP 8.2 and uses [Laravel](https://laravel.com/). It uses [Composer](https://getcomposer.org/) to manage the PHP dependencies.
 
-> :information_source: **Info**: You need PHP 8.0, MySQL, and Composer 2.1 to use this backend.
+> :information_source: **Info**: You need PHP 8.2, MySQL, and Composer 2.5 to use this backend.
 
 ## Set up the backend
 
@@ -56,16 +56,16 @@ To set up Docker, follow the steps below.
 
 ```bash
 # Build and start the docker containers
-docker-compose up -d
+docker compose up -d
 
 # Install composer packages
-docker-compose exec php composer install --no-interaction
+docker compose exec php composer install --no-interaction
 
 # Generate application key
-docker-compose exec php php artisan key:generate
+docker compose exec php php artisan key:generate
 
 # Run application migrations
-docker-compose exec php php artisan migrate
+docker compose exec php php artisan migrate
 ```
 
 You have now configured and launched a Docker instance that contains PHP, Laravel, Composer, and MySQL.

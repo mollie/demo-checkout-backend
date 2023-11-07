@@ -6,18 +6,15 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class PaymentRequest extends FormRequest
 {
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules()
+    public function rules(): array
     {
         return [
             'method' => [
+                'nullable',
                 'max:255',
             ],
             'issuer' => [
+                'nullable',
                 'string',
                 'max:255',
             ],

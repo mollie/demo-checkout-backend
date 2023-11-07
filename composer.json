@@ -4,21 +4,19 @@
     "type": "project",
     "license": "MIT",
     "require": {
-        "php": "^8.0",
-        "darkaonline/l5-swagger": "^8.0",
-        "fideloper/proxy": "^4.4",
-        "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^7.0.1",
-        "itsgoingd/clockwork": "^5.0",
-        "laravel/framework": "^8.40",
-        "laravel/tinker": "^2.5",
-        "mollie/laravel-mollie": "^2.15",
-        "sentry/sentry-laravel": "^2.7"
+        "php": "^8.2",
+        "darkaonline/l5-swagger": "^8.5",
+        "guzzlehttp/guzzle": "^7.8",
+        "itsgoingd/clockwork": "^5.1",
+        "laravel/framework": "^10.30",
+        "laravel/tinker": "^2.8",
+        "mollie/laravel-mollie": "^2.25",
+        "sentry/sentry-laravel": "^3.8"
     },
     "require-dev": {
-        "barryvdh/laravel-ide-helper": "^2.10",
-        "facade/ignition": "^2.5",
-        "nunomaduro/collision": "^5.0"
+        "laravel/pint": "^1.13",
+        "nunomaduro/collision": "^7.10",
+        "spatie/laravel-ignition": "^2.0"
     },
     "autoload": {
         "psr-4": {
@@ -31,19 +29,14 @@
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
         ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+        ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
-        ],
-        "post-update-cmd": [
-            "@composer ide-helper"
-        ],
-        "ide-helper": [
-            "php artisan ide-helper:generate",
-            "php artisan ide-helper:meta",
-            "php artisan ide-helper:models --nowrite"
         ]
     },
     "extra": {
@@ -54,8 +47,12 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true
+        }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true
 }

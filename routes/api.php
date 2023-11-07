@@ -1,13 +1,17 @@
 <?php
 
+use App\Http\Controllers\Api\MethodsController;
+use App\Http\Controllers\Api\PaymentsController;
+use Illuminate\Support\Facades\Route;
+
 // PaymentMethodsController
-Route::resource('methods', 'MethodsController')->only(
-    'index'
-);
+Route::apiResource('methods', MethodsController::class)->only([
+    'index',
+]);
 
 Route::middleware('device')->group(function () {
     // PaymentsController
-    Route::resource('payments', 'PaymentsController')->only(
-        'index', 'store', 'show'
-    );
+    Route::apiResource('payments', PaymentsController::class)->only([
+        'index', 'store', 'show',
+    ]);
 });

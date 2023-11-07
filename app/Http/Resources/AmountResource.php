@@ -2,28 +2,22 @@
 
 namespace App\Http\Resources;
 
-use DateTimeInterface;
-use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use OpenApi\Attributes as OA;
 
-/**
- * @OA\Schema(schema="Amount")
- *
- * @OA\Property(property="value", type="number", format="double")
- * @OA\Property(property="currency", type="string")
- */
+#[OA\Schema(
+    schema: 'Amount',
+    properties: [
+        new OA\Property('value', type: 'number', format: 'double'),
+        new OA\Property('currency', type: 'string'),
+    ]
+)]
 class AmountResource extends JsonResource
 {
-    /**
-     * Transform the resource into an array.
-     *
-     * @param Request $request
-     * @return array
-     */
-    public function toArray($request)
+    public function toArray($request): array
     {
         return [
-            'value' => (double) $this->value,
+            'value' => (float) $this->value,
             'currency' => (string) $this->currency,
         ];
     }
