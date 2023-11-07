@@ -1,27 +1,26 @@
+/.phpunit.cache
 /node_modules
+/public/build
 /public/hot
 /public/storage
 /storage/*.key
-/storage/*.json
 /vendor
 .env
 .env.backup
+.env.production
 .phpunit.result.cache
+Homestead.json
+Homestead.yaml
+auth.json
 npm-debug.log
 yarn-error.log
-
-# PHPStorm
-.idea
+/.fleet
+/.idea
+/.vscode
 
 # macOS
 .DS_Store
 
-# barryvdh/laravel-ide-helper
-.phpstorm.meta.php
-_ide_helper.php
-_ide_helper_models.php
-
 # Internal
 .gitlab-ci.yml
 Envoy.blade.php
-public/reset_opcache.php

@@ -2,32 +2,26 @@
 
 namespace App\Http\Resources;
 
-use DateTimeInterface;
-use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use OpenApi\Attributes as OA;
 
-/**
- * @OA\Schema(schema="Price")
- *
- * @OA\Property(property="description", type="string")
- * @OA\Property(property="fixed", ref="#/components/schemas/Amount")
- * @OA\Property(property="variable", type="number", format="double")
- * @OA\Property(property="fee_region", type="string", nullable=true)
- */
+#[OA\Schema(
+    schema: 'Price',
+    properties: [
+        new OA\Property('description', type: 'string'),
+        new OA\Property('fixed', ref: AmountResource::class),
+        new OA\Property('variable', type: 'number', format: 'double'),
+        new OA\Property('fee_region', type: 'string', nullable: true),
+    ]
+)]
 class PriceResource extends JsonResource
 {
-    /**
-     * Transform the resource into an array.
-     *
-     * @param Request $request
-     * @return array
-     */
-    public function toArray($request)
+    public function toArray($request): array
     {
         return [
             'description' => (string) $this->description,
             'fixed' => new AmountResource($this->fixed),
-            'variable' => (double)$this->variable,
+            'variable' => (float) $this->variable,
             'fee_region' => isset($this->feeRegion) ? (string) $this->feeRegion : null,
         ];
     }

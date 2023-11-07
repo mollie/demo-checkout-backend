@@ -2,34 +2,24 @@
 
 namespace App\Http\Resources;
 
-use DateTimeInterface;
-use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use OpenApi\Attributes as OA;
 
-/**
- * @OA\Schema(schema="Issuer")
- *
- * @OA\Property(property="id", type="string")
- *
- * @OA\Property(property="name", type="string")
- *
- * @OA\Property(property="image", ref="#/components/schemas/Image")
- */
+#[OA\Schema(
+    schema: 'Issuer',
+    properties: [
+        new OA\Property('id', type: 'string'),
+        new OA\Property('name', type: 'string'),
+        new OA\Property('image', ref: ImageResource::class),
+    ]
+)]
 class IssuerResource extends JsonResource
 {
-    /**
-     * Transform the resource into an array.
-     *
-     * @param Request $request
-     * @return array
-     */
-    public function toArray($request)
+    public function toArray($request): array
     {
         return [
             'id' => (string) $this->id,
-
             'name' => (string) $this->name,
-
             'image' => new ImageResource($this->image),
         ];
     }

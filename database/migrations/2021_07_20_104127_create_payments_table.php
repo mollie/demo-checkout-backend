@@ -1,18 +1,13 @@
 <?php
 
-use App\Models\Payment;
+use App\Models\Enums\PaymentStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePaymentsTable extends Migration
+return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
+    public function up(): void
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
@@ -28,26 +23,14 @@ class CreatePaymentsTable extends Migration
             $table->string('description');
 
             $table->string('url')->nullable();
-            $table->enum('status', [
-                Payment::$STATUS_OPEN,
-                Payment::$STATUS_CANCELED,
-                Payment::$STATUS_PENDING,
-                Payment::$STATUS_EXPIRED,
-                Payment::$STATUS_FAILED,
-                Payment::$STATUS_PAID,
-            ])->default('open');
+            $table->enum('status', array_map(fn ($status) => $status->value, PaymentStatus::cases()))->default(PaymentStatus::OPEN->value);
 
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('payments');
     }
-}
+};

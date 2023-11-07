@@ -2,7 +2,7 @@ version: '3'
 
 services:
   nginx:
-    image: nginx:1.20-alpine
+    image: nginx:1.25-alpine
     restart: unless-stopped
     ports:
       - "8000:80"
@@ -23,7 +23,7 @@ services:
       - ./:/var/src
 
   mysql:
-    image: mariadb:10.7
+    image: mariadb:11.1
     restart: unless-stopped
     ports:
       - "${DB_PORT}:3306"

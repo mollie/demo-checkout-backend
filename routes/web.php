@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PaymentsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -7,4 +8,4 @@ Route::get('/', function () {
 });
 
 // PaymentsController
-Route::post('payments/{payment}/webhook', 'PaymentsController@webhook')->name('payments.webhook');
+Route::post('payments/{payment}/webhook', [PaymentsController::class, 'webhook'])->name('payments.webhook');
