@@ -43,7 +43,7 @@ class PaymentsController extends Controller
             schema: new OA\Schema(properties: [
                 new OA\Property('method', type: 'string', default: null, nullable: true),
                 new OA\Property('issuer', type: 'string', default: null, nullable: true),
-                new OA\Property('amount', type: 'number', format: 'double', default: '13.37'),
+                new OA\Property('amount', type: 'number', format: 'double', default: '12.34'),
                 new OA\Property('description', type: 'string', default: 'Test payment'),
             ])
         )),
